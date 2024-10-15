@@ -1,15 +1,16 @@
-import './App.css'
-import Home from './components/Home'
-import Navbar from './components/Navbar'
+import "./App.css";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import { Provider } from "react-redux";
+import { store } from "./common/redux/store";
 
 function App() {
-
   return (
-    <>
-    <Navbar/>
-    <Home/>
-    </>
-  )
+    <Provider store={store}>
+      <Navbar />
+      <Home />
+    </Provider>
+  );
 }
 
-export default App
+export default App;

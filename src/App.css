@@ -1,0 +1,53 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.boxParentPadding {
+  padding: 20px;
+}
+.boxParent {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.boxChild {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #e2e6ee;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.bookInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+@media (max-width: 1200px) {
+  .boxParent {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .boxParent {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .boxParent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .boxParent {
+    grid-template-columns: 1fr;
+  }
+}
