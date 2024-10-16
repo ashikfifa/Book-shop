@@ -36,7 +36,7 @@
 }
 
 .bookTitle {
-  @apply text-xl font-medium pt-2;
+  @apply text-xl cursor-pointer font-medium pt-2;
 }
 
 .imgCursor {

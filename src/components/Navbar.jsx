@@ -1,20 +1,29 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [isOpen, setIsOpen] = useState(false);
 
+  const navigate = useNavigate()
+
   const handleNavClick = (navItem) => {
     setActive(navItem);
     setIsOpen(false);
+    if(navItem==='Home'){
+      navigate('/')
+    }
+    else if(navItem==='WishList'){
+      navigate('/wishlist')
+    }
   };
 
   return (
     <nav className="bg-red-500 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white font-bold text-xl">Logo</div>
+        <div className="text-white font-bold text-xl cursor-pointer" onClick={()=>handleNavClick('Home')} >Logo</div>
         <div className="hidden md:flex space-x-6">
-          {["Home", "About", "Contact"].map((navItem) => (
+          {["Home", "WishList", "Contact"].map((navItem) => (
             <button
               key={navItem}
               onClick={() => handleNavClick(navItem)}

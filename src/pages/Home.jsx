@@ -6,6 +6,10 @@ import { setLoading } from "../common/redux/loadingSlice";
 import LoadersComponent from "../components/Loader";
 import Pagination from "../components/Pagination";
 import HeaderList from "../components/HeaderList";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../common/redux/wishListSlice";
 
 const Home = () => {
   const [bookListState, setBookListState] = useState([]);
@@ -20,19 +24,16 @@ const Home = () => {
     return localStorage.getItem("selectedGenre") || "";
   });
 
-  const [wishList, setWishList] = useState([]);
-
   const loading = useSelector((state) => state.loading);
+  const wishList = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
 
   const handleMark = (title) => {
-    setWishList((prev) => {
-      if (prev.includes(title)) {
-        return prev.filter((t) => t !== title);
-      } else {
-        return [...prev, title];
-      }
-    });
+    if (wishList?.includes(title)) {
+      dispatch(removeFromWishlist(title));
+    } else {
+      dispatch(addToWishlist(title));
+    }
   };
 
   //Store wishlist in localStorage
@@ -99,8 +100,10 @@ const Home = () => {
                 title={item?.title}
                 genre={item?.subjects}
                 id={item?.id}
-                isMarked={wishList.includes(item.title)}
+                isMarked={wishList?.includes(item.title)}
                 onMark={handleMark}
+                bookListState={bookListState}
+                index={index}
               />
             </div>
           ))}
