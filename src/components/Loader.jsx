@@ -4,8 +4,8 @@ import { Placeholder,Loader } from "rsuite";
 const LoadersComponent = () => {
   return (
     <div>
-      <Placeholder.Paragraph rows={8} />
-      <Loader center content="loading" />
+      <Placeholder.Paragraph rows={18} />
+      <Loader size="md" center content="loading" />
     </div>
   );
 };

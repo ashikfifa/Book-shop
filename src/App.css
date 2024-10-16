@@ -3,31 +3,55 @@
 }
 
 .boxParentPadding {
-  padding: 20px;
+  @apply p-5;
 }
+
 .boxParent {
-  margin-top: 25px;
-  display: grid;
+  @apply mt-16 grid gap-5;
   grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
 }
 
 .boxChild {
-  width: 100%;
-  height: auto;
-  padding: 20px;
-  border-radius: 4px;
-  border: 1px solid #e2e6ee;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-}
-.bookInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+  @apply w-full h-auto p-5 rounded border border-gray-300 flex flex-wrap gap-4;
 }
 
+.bookInfo {
+  @apply flex flex-col gap-1;
+}
+
+.pagination {
+  @apply flex flex-wrap justify-center mt-4;
+}
+
+.pagination button {
+  @apply w-10 h-10 font-semibold text-lg mx-2 rounded-lg cursor-pointer transition-all ease-in-out duration-300 bg-transparent text-gray-200 border;
+}
+
+.pagination button.active {
+  @apply font-black border-black bg-red-500 text-white;
+}
+
+.listHeader {
+  @apply flex items-center justify-between gap-2 flex-wrap;
+}
+
+.bookTitle {
+  @apply text-xl font-medium pt-2;
+}
+
+.imgCursor {
+  @apply cursor-pointer;
+}
+
+.authorNameStyle {
+  @apply text-lg font-normal pb-2;
+}
+
+.genreFont {
+  @apply text-sm font-medium;
+}
+
+/* Responsive grid layout */
 @media (max-width: 1200px) {
   .boxParent {
     grid-template-columns: repeat(4, 1fr);
