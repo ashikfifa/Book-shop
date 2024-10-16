@@ -1,6 +1,6 @@
 ## Demo
 
- [`Live Demo`]([https://boisterous-cranachan-8efd37.netlify.app](https://book-shopsbd.netlify.app/))
+ [`Live Demo`](https://book-shopsbd.netlify.app/)
 
 
 
