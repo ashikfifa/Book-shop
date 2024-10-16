@@ -1,12 +1,10 @@
-// src/common/redux/wishlistSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const wishlistSlice = createSlice({
-  name: 'wishlist',
+  name: "wishlist",
   initialState: [],
   reducers: {
     addToWishlist: (state, action) => {
-      // Check if the item is already in the wishlist
       if (!state.includes(action.payload)) {
         state.push(action.payload);
       }

@@ -3,7 +3,7 @@
 }
 
 .boxParentPadding {
-  @apply p-5;
+  @apply pl-10 pr-10 pt-5;
 }
 
 .boxParent {
@@ -51,7 +51,6 @@
   @apply text-sm font-medium;
 }
 
-/* Responsive grid layout */
 @media (max-width: 1200px) {
   .boxParent {
     grid-template-columns: repeat(4, 1fr);

@@ -10,6 +10,7 @@ import {
   addToWishlist,
   removeFromWishlist,
 } from "../common/redux/wishListSlice";
+import { bookListMock } from "../Utils";
 
 const Home = () => {
   const [bookListState, setBookListState] = useState([]);
@@ -39,12 +40,13 @@ const Home = () => {
   //Store wishlist in localStorage
   localStorage.setItem("wishList", JSON.stringify(wishList));
 
-  const getBookList = async () => {
+  const getBookList = () => {
     try {
       dispatch(setLoading(true));
-      const result = await bookListData();
-      setBookListState(result?.results);
-      setFilteredBooks(result?.results);
+      // const result = await bookListData();
+      // const result = await bookListMock();
+      setBookListState(bookListMock?.results);
+      setFilteredBooks(bookListMock?.results);
     } catch (error) {
       console.log(error);
     }
