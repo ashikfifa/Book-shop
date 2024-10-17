@@ -13,7 +13,7 @@ const BookDetails = () => {
         {bookDetails?.authors[0]?.name} ({bookDetails?.authors[0]?.birth_year}{" "}
         {`-`} {bookDetails?.authors[0]?.death_year}){" "}
       </p>
-      <div className="flex justify-between 	mt-10">
+      <div className="flex flex-wrap justify-between 	mt-10">
         <div>
           <p className=" font-semibold text-base underline  underline-offset-2 pb-2">
             Bookshelves
@@ -38,7 +38,7 @@ const BookDetails = () => {
         </div>
       </div>
 
-      <div className=" flex justify-center mt-8">
+      <div className=" flex justify-center mt-12">
         <img src={bookDetails?.formats?.["image/jpeg"]} alt=""/>
       </div>
     </div>

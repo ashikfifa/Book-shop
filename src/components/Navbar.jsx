@@ -67,7 +67,7 @@ const Navbar = () => {
 
       {isOpen && (
         <div className="md:hidden mt-2 space-y-2">
-          {["Home", "About", "Contact"].map((navItem) => (
+          {["Home", "WishList", "Contact"].map((navItem) => (
             <button
               key={navItem}
               onClick={() => handleNavClick(navItem)}

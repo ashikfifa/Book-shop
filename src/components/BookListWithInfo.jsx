@@ -18,20 +18,20 @@ const BookListWithInfo = (props) => {
 
   const navigate = useNavigate();
 
-  const handleDetails = () => {
-    navigate("/book-details", { state: bookListState[index] });
-    console.log("7777777", bookListState[index]);
+  const handleDetails = (title) => {
+    // navigate("/book-details", { state: bookListState[index] });
+    console.log("7777777", title);
   };
 
   return (
     <div className="bookInfo">
-      <div className=" h-[200px]">
+      <div className=" h-[400px]">
         <img
           className=" cursor-pointer"
           height={"100%"}
           width={"200px"}
           src={coverImg}
-          onClick={handleDetails}
+          onClick={handleDetails(title)}
           alt="coverImg"
         />
       </div>
