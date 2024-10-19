@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { bookListData } from "../common/api";
-import BookListWithInfo from "../components/bookListWithInfo";
+import BookListWithInfo from "../components/BookListWithInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../common/redux/loadingSlice";
 import LoadersComponent from "../components/Loader";
