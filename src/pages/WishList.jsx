@@ -14,7 +14,7 @@ const WishList = () => {
           </div>
         ))}
       </div>
-      {wishlistItem?.length === 0 && <> No Books Founds </>}
+      {wishlistItem?.length === 0 && <> No Book Founds </>}
     </div>
   );
 };
