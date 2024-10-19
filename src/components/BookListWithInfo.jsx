@@ -5,62 +5,62 @@ import { useNavigate } from "react-router-dom";
 
 const BookListWithInfo = (props) => {
   const {
-    coverImg,
-    authorName,
-    title,
-    genre,
-    isMarked,
-    onMark,
-    id,
-    bookListState,
-    index,
+    isMarked = false,
+    onMark = false,
+    item,
+    wishListPage = false,
   } = props;
 
   const navigate = useNavigate();
 
-  const handleDetails = (title) => {
-    // navigate("/book-details", { state: bookListState[index] });
-    console.log("7777777", title);
+  const handleDetails = () => {
+    navigate("/book-details", { state: item });
   };
 
   return (
     <div className="bookInfo">
       <div className=" h-[400px]">
-        <img
-          className=" cursor-pointer"
-          height={"100%"}
-          width={"200px"}
-          src={coverImg}
-          onClick={handleDetails(title)}
-          alt="coverImg"
-        />
+        <div className=" relative group"onClick={handleDetails}>
+          <img
+            className="cursor-pointer  w-[200px] group-hover:opacity-50 transition-opacity duration-300"
+            src={item?.formats?.["image/jpeg"]}
+            onClick={handleDetails}
+            alt="coverImg"
+          />
+          <button onClick={handleDetails} className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-30 text-white font-semibold">
+            Add to Cart
+          </button>
+        </div>
       </div>
+
       <div className=" h-[160px]">
         <div className="bookTitle" onClick={handleDetails}>
-          {title.length > 30 ? (
-            <span title={title}>{title.slice(0, 30)}...</span>
+          {item?.title.length > 30 ? (
+            <span title={item?.title}>{item?.title.slice(0, 30)}...</span>
           ) : (
-            title
+            item?.title
           )}
         </div>
-        <div className="authorNameStyle">{authorName}</div>
+        <div className="authorNameStyle">{item?.authors[0]?.name}</div>
       </div>
       <div className=" h-[200px] overflow-hidden">
         {" "}
         <span className="genreFont">Genre:</span>{" "}
-        {genre?.map((item) => (
-          <li> {item}</li>
+        {item?.subjects?.map((item, index) => (
+          <li key={index}> {item}</li>
         ))}{" "}
       </div>
       <div className="listHeader">
-        <span className="genreFont">Id: {id} </span>
+        <span className="genreFont">Id: {item?.id} </span>
 
         <div className="imgCursor">
-          <img
-            onClick={() => onMark(title)}
-            src={isMarked ? heartIcon : heartIconWithoutFill}
-            alt={isMarked ? "heartIcon" : "heartIconWithoutFill"}
-          />
+          {wishListPage == "forHomePage" && (
+            <img
+              onClick={() => onMark(item)}
+              src={isMarked ? heartIcon : heartIconWithoutFill}
+              alt={isMarked ? "heartIcon" : "heartIconWithoutFill"}
+            />
+          )}
         </div>
       </div>
     </div>

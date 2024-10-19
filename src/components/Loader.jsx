@@ -5,7 +5,7 @@ const LoadersComponent = () => {
   return (
     <div>
       <Placeholder.Paragraph rows={18} />
-      <Loader size="md" center content="loading..." />
+      <Loader size="md" center content="Loading..." />
     </div>
   );
 };

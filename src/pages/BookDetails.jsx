@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 const BookDetails = () => {
   const location = useLocation();
   const bookDetails = location.state;
-  console.log("989889", bookDetails);
 
   return (
     <div className="boxParentPadding">
@@ -33,13 +32,14 @@ const BookDetails = () => {
         </div>
 
         <div>
-         <span className=" font-semibold">Download count:</span>  {bookDetails?.download_count} <br />
-         <span className=" font-semibold">Id:</span>  {bookDetails?.id}
+          <span className=" font-semibold">Download count:</span>{" "}
+          {bookDetails?.download_count} <br />
+          <span className=" font-semibold">Id:</span> {bookDetails?.id}
         </div>
       </div>
 
-      <div className=" flex justify-center mt-12">
-        <img src={bookDetails?.formats?.["image/jpeg"]} alt=""/>
+      <div className=" flex justify-center mt-12 mb-8">
+        <img src={bookDetails?.formats?.["image/jpeg"]} alt="" />
       </div>
     </div>
   );

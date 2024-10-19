@@ -23,7 +23,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white font-bold text-xl cursor-pointer" onClick={()=>handleNavClick('Home')} >Logo</div>
         <div className="hidden md:flex space-x-6">
-          {["Home", "WishList", "Contact"].map((navItem) => (
+          {["Home", "WishList"].map((navItem) => (
             <button
               key={navItem}
               onClick={() => handleNavClick(navItem)}
@@ -67,7 +67,7 @@ const Navbar = () => {
 
       {isOpen && (
         <div className="md:hidden mt-2 space-y-2">
-          {["Home", "WishList", "Contact"].map((navItem) => (
+          {["Home", "WishList"].map((navItem) => (
             <button
               key={navItem}
               onClick={() => handleNavClick(navItem)}

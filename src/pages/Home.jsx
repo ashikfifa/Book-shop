@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { bookListData } from "../common/api";
-import BookListWithInfo from "../components/BookListWithInfo";
+import BookListWithInfo from "../components/bookListWithInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../common/redux/loadingSlice";
 import LoadersComponent from "../components/Loader";
@@ -26,27 +26,29 @@ const Home = () => {
   });
 
   const loading = useSelector((state) => state.loading);
-  const wishList = useSelector((state) => state.wishlist);
+  const wishlist = useSelector((state) => state.wishlist.items);
   const dispatch = useDispatch();
 
-  const handleMark = (title) => {
-    if (wishList?.includes(title)) {
-      dispatch(removeFromWishlist(title));
+  const handleMark = (item) => {
+    const itemInWishlist = wishlist.find((wishItem) => wishItem.id === item.id);
+    if (itemInWishlist) {
+      dispatch(removeFromWishlist(item));
     } else {
-      dispatch(addToWishlist(title));
+      dispatch(addToWishlist(item));
     }
   };
 
-  //Store wishlist in localStorage
-  localStorage.setItem("wishList", JSON.stringify(wishList));
+  const isMarked = (item) => {
+    return wishlist.some((wishItem) => wishItem.id === item.id);
+  };
 
-  const getBookList = () => {
+  const getBookList = async () => {
     try {
       dispatch(setLoading(true));
-      // const result = await bookListData();
+      const result = await bookListData();
       // const result = await bookListMock();
-      setBookListState(bookListMock?.results);
-      setFilteredBooks(bookListMock?.results);
+      setBookListState(result?.results);
+      setFilteredBooks(result?.results);
     } catch (error) {
       console.log(error);
     }
@@ -97,15 +99,10 @@ const Home = () => {
           {currentBooks?.map((item, index) => (
             <div key={index} className="boxChild">
               <BookListWithInfo
-                coverImg={item?.formats?.["image/jpeg"]}
-                authorName={item?.authors[0]?.name}
-                title={item?.title}
-                genre={item?.subjects}
-                id={item?.id}
-                isMarked={wishList?.includes(item.title)}
+                isMarked={isMarked(item)}
                 onMark={handleMark}
-                bookListState={bookListState}
-                index={index}
+                item={item}
+                wishListPage={"forHomePage"}
               />
             </div>
           ))}
