@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import BookListWithInfo from "../components/bookListWithInfo";
+import BookListWithInfo from "../components/BookListWithInfo";
 
 const WishList = () => {
   const wishlistItem = useSelector((state) => state.wishlist.items);
