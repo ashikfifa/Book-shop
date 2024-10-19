@@ -59,6 +59,10 @@ const Home = () => {
     getBookList();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('wishList', JSON.stringify(wishlist));
+  }, [wishlist]);
+
   //For filter by Genre and Search
   useEffect(() => {
     if (selectedGenre === null) {
